@@ -13,6 +13,7 @@
 # https://pypi.org/project/autocomplete/
 # https://docs.python.org/3/howto/curses.html
 
+import argparse
 import autocomplete
 import curses
 
@@ -81,5 +82,11 @@ def main(stdscr):
     auto_prompt = AutoPrompt(stdscr)
     current_row = 0
     auto_prompt.get_predictions(current_row)
+
+# Parse command line arguments
+help_text = 'For more help type "auto_prompt.py --help"'
+parser = argparse.ArgumentParser(description="auto_prompt.py command line arguments")
+parser.add_argument('-t', '--training-text', type=str, required=True, help='path/to/training.txt file')
+args = parser.parse_args()
 
 curses.wrapper(main)
