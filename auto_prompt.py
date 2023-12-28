@@ -35,10 +35,14 @@ class AutoPrompt:
                 current_row -= 1
             elif key == curses.KEY_DOWN and current_row < len(self.predictions) - 1:
                 current_row += 1
+            elif key == curses.KEY_UP or key == curses.KEY_DOWN or key == curses.KEY_LEFT or key == curses.KEY_RIGHT:
+                pass
+            elif key == curses.KEY_DC or key == 8 or key == 127:
+                self.console_input = self.console_input[:-1]
             elif key == 10:  # Enter key pressed
                 break  # Exit the loop
             else:
-                self.console_input = chr(key) + self.stdscr.getstr().decode("utf-8")
+                self.console_input += chr(key)
                 self.predictions = autocomplete.predict('the', self.console_input)
 
     def _display_predictions(self, current_row):
