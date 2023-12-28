@@ -17,6 +17,7 @@ import autocomplete
 import curses
 
 class AutoPrompt:
+    console_input = 'bo' # TODO: Initialize to null
     stdscr = 0
     predictions = {}
 
@@ -24,13 +25,7 @@ class AutoPrompt:
         self.stdscr = stdscr
 
     def get_predictions(self, current_row):
-        console_input = "pass"
-        self.predictions = autocomplete.predict('the', 'bo')
-
-        # TODO: Update predictions while user types
-        # while(console_input != 'exit'):
-        #     console_input = input().lower()
-        #     self.predictions = autocomplete.predict('the', console_input)
+        self.predictions = autocomplete.predict('the', self.console_input)
 
         while True:
             self._display_predictions(current_row)
@@ -42,16 +37,19 @@ class AutoPrompt:
                 current_row += 1
             elif key == 10:  # Enter key pressed
                 break  # Exit the loop
+            else:
+                self.console_input = chr(key) + self.stdscr.getstr().decode("utf-8")
+                self.predictions = autocomplete.predict('the', self.console_input)
 
     def _display_predictions(self, current_row):
         h, w = self.stdscr.getmaxyx()
-
         menu_items = self.predictions
         curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
         selected_text = curses.color_pair(1)
         
         self.stdscr.clear()
+        self.stdscr.addstr(0, 0, self.console_input)
 
         for i, item in enumerate(menu_items):
             x = w//2 - len(item[0])//2
