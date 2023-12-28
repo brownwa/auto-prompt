@@ -24,13 +24,21 @@ class AutoPrompt:
         self.stdscr = stdscr
 
     def get_predictions(self, current_row):
+        console_input = "pass"
+        self.predictions = autocomplete.predict('the', 'bo')
+
+        # TODO: Update predictions while user types
+        # while(console_input != 'exit'):
+        #     console_input = input().lower()
+        #     self.predictions = autocomplete.predict('the', console_input)
+
         while True:
             self._display_predictions(current_row)
             key = self.stdscr.getch()
 
             if key == curses.KEY_UP and current_row > 0:
                 current_row -= 1
-            elif key == curses.KEY_DOWN and current_row < len(["Option 1", "Option 2", "Option 3", "Option 4"]) - 1:
+            elif key == curses.KEY_DOWN and current_row < len(self.predictions) - 1:
                 current_row += 1
             elif key == 10:  # Enter key pressed
                 break  # Exit the loop
@@ -38,7 +46,7 @@ class AutoPrompt:
     def _display_predictions(self, current_row):
         h, w = self.stdscr.getmaxyx()
 
-        menu_items = ["Option 1", "Option 2", "Option 3", "Option 4"]
+        menu_items = self.predictions
         curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
         selected_text = curses.color_pair(1)
@@ -46,24 +54,16 @@ class AutoPrompt:
         self.stdscr.clear()
 
         for i, item in enumerate(menu_items):
-            x = w//2 - len(item)//2
+            x = w//2 - len(item[0])//2
             y = h//2 - len(menu_items)//2 + i
             if i == current_row:
                 self.stdscr.attron(selected_text)
-                self.stdscr.addstr(y, x, item)
+                self.stdscr.addstr(y, x, item[0])
                 self.stdscr.attroff(selected_text)
             else:
-                self.stdscr.addstr(y, x, item)
+                self.stdscr.addstr(y, x, item[0])
 
         self.stdscr.refresh()
-
-        # This raises ZeroDivisionError when i == 10.
-        # for i in range(0, 11):
-        #     v = i-10
-        #     self.stdscr.addstr(i, 0, '10 plus {} is {}'.format(v, 10+v))
-
-        # self.stdscr.refresh()
-        # self.stdscr.getkey()
 
 def main(stdscr):
     # Train the model
@@ -79,12 +79,5 @@ def main(stdscr):
     auto_prompt = AutoPrompt(stdscr)
     current_row = 0
     auto_prompt.get_predictions(current_row)
-
-
-    # console_input = "pass"
-    # while(console_input != 'exit'):
-    #     console_input = input().lower()
-    #     output = autocomplete.predict('the', console_input)
-    #     print(f'{output}')
 
 curses.wrapper(main)
