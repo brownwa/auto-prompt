@@ -1,0 +1,364 @@
+Request
+What should a patient know about this drug
+What are the interactions with this drug
+Will this drug help relieve pain for my patient
+Where can I purchase this drug for the best price
+Is this a controlled drug
+Help me to understand what this drug does
+What is the generic name of this drug
+Has the patent on this drug expired
+What are common confusions with this drug
+Where can I find a public data set on pharmaceutical drugs like this one
+Key
+Cardiovascular Drugs
+Aldosterone System (RAAS)
+Lisinopril (Prinivil, Zestril)
+Lisinopril/hydrochlorothiazide (Prinzide, Zestoretic)
+Enalapril (Vasotec)
+Ramipril (Altace)
+Losartan (Cozaar)
+Olmesartan (Benicar)
+Valsartan (Diovan)
+Beta Blockers
+Atenolol (Tenormin)
+Metoprolol tartrate (Lopressor)
+Metoprolol succinate (Toprol XL)
+Nebivolol (Bystolic)
+Propranolol (Inderal)
+Carvedilol (Coreg)
+Calcium Channel Blockers
+Nifedipine XL (Procardia XL)
+Amlodipine (Norvasc)
+Amlodipine/benazepril (Lotrel)
+Diltiazem (Cardizem CD, more)
+Diuretics
+Hydrochlorothiazide (Microzide)
+Metolazone (Zaroxolyn)
+Furosemide (Lasix)
+Torsemide (Demadex)
+Bumetanide (Bumex)
+Spironolactone (Aldactone)
+Statins
+Pravastatin (Pravachol)
+Simvastatin (Zocor)
+Simvastatin/ezetimibe (Vytorin)
+Atorvastatin (Lipitor)
+Rosuvastatin (Crestor)
+Other Agents for Dyslipidemias
+Fenofibrate (Tricor)
+Gemfibrozil (Lopid)
+Omega-3 Acid Ethyl Esters (Lovaza)
+Niacin (Niaspan)
+Ezetimibe (Zetia)
+Colesevelam (Welchol)
+Antiplatelets
+Aspirin
+Aspirin/Dipyridamole (Aggrenox)
+Clopidogrel (Plavix)
+Prasugrel (Effient)
+Ticagrelor (Brilinta)
+Traditional anticoagulants
+Warfarin (Coumadin)
+Enoxaparin (Lovenox)
+Novel Oral Anticoagulants (NOACs)
+Dabigatran (Pradaxa)
+Rivaroxaban (Xarelto)
+Apixaban (Eliquis)
+Antianginals
+Nitroglycerin (Nitrostat)
+Isosorbide mononitrate (Imdur)
+Ranolazine (Ranexa)
+Other Cardiovascular Agents
+Amiodarone (Cordarone, Pacerone)
+Digoxin (Lanoxin)
+Respiratory Drugs
+Inhaled Corticosteroids and
+Long-Acting Beta Agonists
+Fluticasone (Flovent)
+Budesonide (Pulmicort)
+Salmeterol (Serevent)
+Formoterol (Foradil)
+Fluticasone/salmeterol (Advair)
+Budesonide/formoterol (Symbicort)
+Short-Acting Beta Agonists and Anticholinergics
+Albuterol (Ventolin, Proventil)
+Levalbuterol (Xopenex)
+Ipratropium (Atrovent)
+Tiotropium (Spiriva)
+Albuterol/Ipratropium (Combivent, DuoNeb)
+Other Respiratory Agents
+Montelukast (Singulair)
+Gastrointestinal Drugs
+Proton Pump Inhibitors
+Omeprazole (Prilosec)
+Esomeprazole (Nexium)
+Pantoprazole (Protonix)
+Lansoprazole (Prevacid)
+Dexlansoprazole (Dexilant)
+Histamine (H2) Receptor Blockers
+Famotidine (Pepcid)
+Ranitidine (Zantac)
+Laxatives
+Senna (Senokot)
+Bisacodyl (Dulcolax)
+Docusate (Colace)
+Senna/docusate (Senokot-S)
+PEG 3350 (MiraLAX)
+PEG 3350 with electrolytes (GoLYTELY)
+Diarrhea and Ulcerative Colitis
+Dicyclomine (Bentyl)
+Loperamide (Imodium)
+Diphenoxylate/atropine (Lomotil)
+Mesalamine (Asacol-HD, Delzicol, and more)
+Nausea
+Ondansetron (Zofran)
+Prochlorperazine (Compazine)
+Promethazine (Phenergan)
+Metoclopramide (Reglan)
+Renal Drugs
+Renal Medications
+Cinacalcet (Sensipar)
+Sevelamer carbonate (Renvela)
+Potassium chloride (Klor-Con and more)
+Erythropoiesis-Stimulating Agents (ESAs)
+Epoetin alfa (Epogen, Procrit)
+Darbepoetin (Aranesp)
+Neurologic Drugs
+Headache
+Sumatriptan (Imitrex)
+Eletriptan (Relpax)
+Rizatriptan (Maxalt)
+Butalbital, acetaminophen, caffeine (Fioricet)
+Butalbital, aspirin, caffeine (Fiorinal)
+Epilepsy
+Phenytoin (Dilantin)
+Valproic acid (Depakote, Depakene)
+Lamotrigine (Lamictal)
+Carbamazepine (Tegretol, Carbatrol)
+Oxcarbazepine (Trileptal)
+Levetiracetam (Keppra)
+Opioid Analgesics
+Morphine (MS Contin [ER], more)
+Hydromorphone (Dilaudid [IR])
+Oxycodone (Oxycontin [ER])
+Oxycodone/APAP (Percocet, Roxicet, more)
+Fentanyl (Duragesic, more)
+Hydrocodone/APAP (Vicodin, Norco, more)
+Buprenorphine/naloxone (Suboxone)
+Codeine/APAP (Tylenol #3, Tylenol #4)
+Tramadol (Ultram)
+Non-Steroidal Anti-inflammatory Drugs (NSAIDs)
+Meloxicam (Mobic)
+Naproxen (Naprosyn, Aleve)
+Ibuprofen (Advil, Motrin)
+Diclofenac (Voltaren)
+Celecoxib (Celebrex)
+Muscle relaxants
+Carisoprodol (Soma)
+Cyclobenzaprine (Flexeril)
+Adjunct Medications for Pain
+Gabapentin (Neurontin)
+Pregabalin (Lyrica)
+Lidocaine patch (Lidoderm)
+Alzheimer's Disease
+Donepezil (Aricept)
+Memantine (Namenda XR)
+Smoking Cessation
+Nicotine Patch (Nicoderm CQ)
+Varenicline (Chantix)
+Psychiatric Drugs
+Atypical Antipsychotics
+Olanzapine (Zyprexa)
+Quetiapine (Seroquel)
+Risperidone (Risperdal)
+Ziprasidone (Geodon)
+Aripiprazole (Abilify)
+Benzodiazepines
+Clonazepam (Klonopin)
+Lorazepam (Ativan)
+Diazepam (Valium)
+Alprazolam (Xanax)
+Selective Serotonin Reuptake Inhibitors (SSRIs)
+Fluoxetine (Prozac)
+Sertraline (Zoloft)
+Paroxetine (Paxil)
+Citalopram (Celexa)
+Escitalopram (Lexapro)
+Serotonin-Norepinephrine Reuptake Inhibitors (SNRIs)
+Venlafaxine (Effexor, Effexor XR)
+Desvenlafaxine (Pristiq)
+Duloxetine (Cymbalta)
+Non-Benzodiazepine Hypnotics
+Zolpidem (Ambien)
+Eszopiclone (Lunesta)
+Other Antidepressants and Anti-Anxiety Agents
+Amitriptyline (Elavil)
+Nortriptyline (Pamelor)
+Trazodone (Desyrel)
+Mirtazapine (Remeron)
+Bupropion (Wellbutrin)
+Stimulants and Attention Deficit Hyperactivity Disorder (ADHD)
+Agents
+Methylphenidate (Ritalin, Concerta, more)
+Amphetamine/dextroamphetamine (Adderall)
+Lisdexamfetamine (Vyvanse)
+Atomoxetine (Strattera)
+Modafinil (Provigil)
+Endocrinology Drugs
+Oral diabetic agents – I
+Metformin (Glucophage)
+Sitagliptin (Januvia)
+Glyburide (DiaBeta, Glynase)
+Glimepiride (Amaryl)
+Glipizide (Glucotrol)
+Glyburide/metformin (Glucovance)
+Sitagliptin/metformin (Janumet)
+Oral diabetic agents – II
+Rosiglitazone (Avandia)
+Pioglitazone (Actos)
+Canagliflozin (Invokana)
+Injectable diabetic agents
+Insulin aspart (NovoLOG)
+Insulin lispro (HumaLOG)
+Insulin NPH (HumuLIN N, NovoLIN N)
+Insulin glargine (Lantus)
+Insulin detemir (Levemir)
+Exenatide (Byetta)
+Contraceptives
+Norgestimate/ethinyl estradiol (Sprintec, Ortho Tri-Cyclen, TriNessa, many more)
+Drospirenone/ethinyl estradiol (Yaz, Yasmin, many more)
+Norethindrone (Micronor, many more)
+Norelgestromin/ethinyl estradiol (Ortho Evra)
+Etonogestrel/ethinyl estradiol (NuvaRing)
+Corticosteroids
+Prednisone (Deltasone)
+Methylprednisolone (Medrol)
+Hormonal Therapy
+Conjugated Estrogens (Premarin, Enjuvia, Cenestin)
+Testosterone (AndroGel and more)
+Levothyroxine (Synthroid)
+Anastrozole (Arimidex)
+Tamoxifen (Nolvadex)
+Urologic Drugs
+Benign Prostatic Hypertrophy
+Alpha Blockers
+Terazosin (Hytrin)
+Doxazosin (Cardura)
+Alfuzosin (Uroxatral)
+Tamsulosin (Flomax)
+Benign Prostatic Hypertrophy
+5-Alpha Reductase Inhibitors
+Dutasteride (Avodart)
+Finasteride (Proscar, Propecia)
+Erectile Dysfunction
+Sildenafil (Viagra)
+Vardenafil (Levitra)
+Tadalafil (Cialis)
+Overactive Bladder
+Tolterodine (Detrol)
+Solifenacin (VESIcare)
+Darifenacin (Enablex)
+Rheumatologic Drugs
+Osteoporosis
+Risedronate (Actonel)
+Alendronate (Fosamax)
+Ibandronate (Boniva)
+Raloxifene (Evista)
+Rheumatoid Arthritis
+Infliximab (Remicade)
+Adalimumab (Humira)
+Etanercept (Enbrel)
+Methotrexate (Rheumatrex, Trexall)
+Hydroxychloroquine (Plaquenil)
+Gout
+Allopurinol (Zyloprim)
+Colchicine (Colcrys)
+Ophthalmic and Otolaryngological Drugs
+Allergies
+Diphenhydramine (Benadryl)
+Loratadine (Claritin)
+Desloratadine (Clarinex)
+Fexofenadine (Allegra)
+Olopatadine (Patanase, Patanol, Pataday)
+Azelastine (Astelin, Astepro, Optivar)
+Epinephrine (EpiPen)
+Nasal Corticosteroids
+Mometasone (Nasonex)
+Fluticasone (Flonase)
+Cough and Cold
+Hydrocodone/chlorpheniramine (Tussionex Pennkinetic)
+Benzonatate (Tessalon Perles)
+Guaifenesin (Mucinex, more)
+Dextromethorphan (Robitussin, more)
+Pseudoephedrine (Sudafed, more)
+Glaucoma
+Timolol (Timoptic)
+Brimonidine (Alphagan P)
+Brimonidine/timolol (Combigan)
+Dorzolamide (Trusopt)
+Bimatoprost (Lumigan)
+Latanoprost (Xalatan)
+Travoprost (Travatan Z)
+Other Ophthalmic Agents
+Cyclosporine [ophthalmic] (Restasis)
+Dermatologic Drugs
+Acne vulgaris
+Adapalene (Differin)
+Isotretinoin (Amnesteem, Claravis, Absorica, Accutane[DSC])
+Infectious Disease Drugs
+Antibiotics – β-Lactams
+Amoxicillin (Amoxil)
+Amoxicillin/clavulanate (Augmentin)
+Cephalexin (Keflex)
+Cefuroxime (Ceftin)
+Cefdinir (Omnicef)
+Antibiotics – Fluoroquinolones
+Ciprofloxacin (Cipro)
+Levofloxacin (Levaquin)
+Moxifloxacin (Avelox)
+Antibiotics – Macrolides
+Clarithromycin (Biaxin)
+Azithromycin (Zithromax, Z-Pak)
+Antibiotics – Other Agents I
+Clindamycin (Cleocin)
+Doxycycline (Vibramycin, more)
+Linezolid (Zyvox)
+Antibiotics – Other Agents II
+Nitrofurantoin (Macrobid, Macrodantin)
+Metronidazole (Flagyl)
+Sulfamethoxazole/trimethoprim (Bactrim)
+Triazole Antifungals
+Fluconazole (Diflucan)
+Itraconazole (Sporanox)
+Antivirals – Influenza and
+Herpes Simplex
+Oseltamivir (Tamiflu)
+Acyclovir (Zovirax)
+Valacyclovir (Valtrex)
+Formats
+bulleted list
+one paragraph
+1500 words
+middle-school English
+college level English
+professional
+casual
+Framing
+I am a pharmacist doing patient consults
+I am a pharmacist looking up drug interations on Drugs.com
+I am a doctor prescribing medications to a patient
+I am a hosptial administrator trying to source drugs for the best price
+I am a policy maker trying to assess which drugs should be controlled by law
+I am a layperson trying to understand the drugs I was prescribed
+I am an FDA analyst trying to assess what is the generic form of a drug
+I am a business owner manufacturing generic drugs whose patents have expired
+I am a nurse verifying drugs for my patient
+I am an informatics pharmacist building a prescription system for doctors in a hospital
+Shots
+Omeprazole is used to treat excess stomach acid in conditions such as non cancerous stomach ulcers, gastroesophageal reflux disease (GERD), active duodenal ulcer, Zollinger-Ellison syndrome and erosive esophagitis. Omeprazole works by blocking gastric acid production and is from the group of medicines called proton pump inhibitors.
+There are 220 drugs known to interact with omeprazole, along with 3 disease interactions. Of the total drug interactions, 22 are major, 151 are moderate, and 47 are minor. For more details please check https://www.drugs.com/drug-interactions/omeprazole-index.html
+Famotidine is usually the first choice to treat occasional heartburn if your symptoms occur less than two times per week. For more details please check https://www.drugs.com/search.php?searchterm=omeprazole&sources[]=medical-answers
+Pharmaceutical distribution services are available directly from the drug manufacturers. Medical service companies like McKesson Corporation also do pharmaceutical distribution.
+Omeprazole is not a controlled drug. More details are available from the U.S. Department of Justice, Drug Enforcement Administration schedule of controlled substances. An alphabetically ordered list of controlled substances is available on their website, at https://www.deadiversion.usdoj.gov/schedules/
+Omeprazole delayed-release capsules, USP, are indicated for short-term treatment of active duodenal ulcer in adults. Most patients heal within four weeks. Some patients may require an additional four weeks of therapy. For more details please check https://www.drugs.com/pro/omeprazole.html
+Omeprazole is the generic name for Prilosec

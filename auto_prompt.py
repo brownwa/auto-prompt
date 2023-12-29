@@ -16,9 +16,11 @@
 import argparse
 import autocomplete
 import curses
+import os
+import sys
 
 class AutoPrompt:
-    console_input = 'bo' # TODO: Initialize to null
+    console_input = 'What' # TODO: Initialize to null
     stdscr = 0
     predictions = {}
 
@@ -26,7 +28,8 @@ class AutoPrompt:
         self.stdscr = stdscr
 
     def get_predictions(self, current_row):
-        self.predictions = autocomplete.predict('the', self.console_input)
+        # TODO: Start prediction with one of the five prompt components
+        self.predictions = autocomplete.predict('Request', self.console_input)
 
         while True:
             self._display_predictions(current_row)
@@ -44,7 +47,8 @@ class AutoPrompt:
                 break  # Exit the loop
             else:
                 self.console_input += chr(key)
-                self.predictions = autocomplete.predict('the', self.console_input)
+                # TODO: Start prediction with one of the five prompt components
+                self.predictions = autocomplete.predict('Request', self.console_input)
 
     def _display_predictions(self, current_row):
         h, w = self.stdscr.getmaxyx()
@@ -68,9 +72,27 @@ class AutoPrompt:
 
         self.stdscr.refresh()
 
+def find_file(start_path, target_filename):
+    for root, dirs, files in os.walk(start_path):
+        for filename in files:
+            if filename == target_filename:
+                return os.path.join(root, filename)
+
+    # If the file is not found
+    return None
+
 def main(stdscr):
     # Train the model
-    autocomplete.load()
+    with open(args.training_file, 'rb') as training_file:
+        training_text = str(training_file.read())
+    model = 'auto_prompt.pkl'
+    autocomplete.models.train_models(training_text, model)
+
+    # Load the model
+    python_executable = sys.executable
+    start_path = os.path.dirname(os.path.dirname(python_executable))
+    model_path = find_file(start_path, model)
+    autocomplete.models.load_models(model_path)
 
     # Initialize UI
     curses.curs_set(0)  # Hide the cursor
@@ -84,9 +106,8 @@ def main(stdscr):
     auto_prompt.get_predictions(current_row)
 
 # Parse command line arguments
-help_text = 'For more help type "auto_prompt.py --help"'
 parser = argparse.ArgumentParser(description="auto_prompt.py command line arguments")
-parser.add_argument('-t', '--training-text', type=str, required=True, help='path/to/training.txt file')
+parser.add_argument('-t', '--training-file', type=str, required=True, help='path/to/training.txt file')
 args = parser.parse_args()
 
 curses.wrapper(main)
