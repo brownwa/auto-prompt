@@ -23,6 +23,7 @@ except ImportError:
 
 class AutoPrompt:
     console_input = ''
+    final_prompt = ''
     prompt_y = 0
     stdscr = 0
     corpus = []
@@ -47,18 +48,15 @@ class AutoPrompt:
                 self.console_input = self.suggestions[current_row]
             elif key == 27: # ESC key pressed
                 break
-            # TODO: Configure Enter key to do a new line
-            # elif key == 10: # Enter key pressed
-            #     break
-            elif (
-                    # ASCII codes for US English keyboard inputs
-                    (key >= 65 and key <= 122) or   # a-zA-Z
-                    (key >= 48 and key <= 57) or    # 0-9
-                    (key >= 32 and key <= 47) or    # spacebar!"#$%&'()*+,-./
-                    (key >= 58 and key <= 64) or    # :;<=>?@
-                    (key >= 91 and key <= 96) or    # [\]^_`
-                    (key >= 123 and key <= 126)     # {|}~
-                ):
+            elif key == 10 or key == 13: # Enter key pressed
+                if len(self.console_input) == 0:
+                    continue
+                self.final_prompt += f'{self.console_input}\n'
+                self.console_input = ''
+                self.suggestions.clear()
+                self.prompt_y += 1
+            elif key >= 32 and key <= 126:
+                # ASCII codes for US English keyboard inputs
                 self.console_input += chr(key)
                 self._complete()
 
@@ -72,17 +70,24 @@ class AutoPrompt:
         selected_text = curses.color_pair(1)
         
         self.stdscr.clear()
-        self.stdscr.addstr(0, 0, self.console_input)
+        self.stdscr.addstr(0, 0, self.final_prompt)
+        self.stdscr.addstr(self.prompt_y, 0, self.console_input)
 
         for i, item in enumerate(menu_items):
             x = 0
             y = self.prompt_y + 1 + i
-            if i == current_row:
-                self.stdscr.attron(selected_text)
-                self.stdscr.addstr(y, x, item)
-                self.stdscr.attroff(selected_text)
-            else:
-                self.stdscr.addstr(y, x, item)
+
+            try:
+                if i == current_row:
+                    self.stdscr.attron(selected_text)
+                    self.stdscr.addstr(y, x, item)
+                    self.stdscr.attroff(selected_text)
+                else:
+                    self.stdscr.addstr(y, x, item)
+            except curses.error:
+                # Handle cases where the text in an autocomplete menu item
+                # wraps around the curses screen buffer
+                pass
 
         self.stdscr.refresh()
 
