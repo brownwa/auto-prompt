@@ -23,6 +23,7 @@ except ImportError:
 
 class AutoPrompt:
     console_input = ''
+    prompt_y = 0
     stdscr = 0
     corpus = []
     suggestions = []
@@ -31,7 +32,7 @@ class AutoPrompt:
         self.stdscr = stdscr
 
     def get_suggestions(self, current_row):
-        self.stdscr.addstr(0, 0, '[Start typing a generative AI prompt]')
+        self.stdscr.addstr(0, 0, '[Start typing a generative AI prompt, press ESC to quit]')
 
         while True:
             key = self.stdscr.getch()
@@ -42,8 +43,13 @@ class AutoPrompt:
                 current_row += 1
             elif key == curses.KEY_DC or key == 8 or key == 127:
                 self.console_input = self.console_input[:-1]
-            elif key == 10:  # Enter key pressed
-                break  # Exit the loop
+            elif key == 9: # Tab key pressed
+                self.console_input = self.suggestions[current_row]
+            elif key == 27: # ESC key pressed
+                break
+            # TODO: Configure Enter key to do a new line
+            # elif key == 10: # Enter key pressed
+            #     break
             elif (
                     # ASCII codes for US English keyboard inputs
                     (key >= 65 and key <= 122) or   # a-zA-Z
@@ -69,8 +75,8 @@ class AutoPrompt:
         self.stdscr.addstr(0, 0, self.console_input)
 
         for i, item in enumerate(menu_items):
-            x = w//2 - len(item[0])//2
-            y = h//2 - len(menu_items)//2 + i
+            x = 0
+            y = self.prompt_y + 1 + i
             if i == current_row:
                 self.stdscr.attron(selected_text)
                 self.stdscr.addstr(y, x, item)
