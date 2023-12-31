@@ -16,10 +16,8 @@
 import argparse
 import bisect
 import curses
-try:
-    import gnureadline as readline
-except ImportError:
-    import readline
+
+final_prompt = ''
 
 class AutoPrompt:
     console_input = ''
@@ -32,7 +30,7 @@ class AutoPrompt:
     def __init__(self, stdscr):
         self.stdscr = stdscr
 
-    def get_suggestions(self, current_row):
+    def build_prompt(self, current_row):
         self.stdscr.addstr(0, 0, '[Start typing a generative AI prompt, press ESC to quit]')
 
         while True:
@@ -47,6 +45,7 @@ class AutoPrompt:
             elif key == 9: # Tab key pressed
                 self.console_input = self.suggestions[current_row]
             elif key == 27: # ESC key pressed
+                self.final_prompt += f'{self.console_input}\n'
                 break
             elif key == 10 or key == 13: # Enter key pressed
                 if len(self.console_input) == 0:
@@ -58,7 +57,7 @@ class AutoPrompt:
             elif key >= 32 and key <= 126:
                 # ASCII codes for US English keyboard inputs
                 self.console_input += chr(key)
-                self._complete()
+                self._get_suggestions()
 
             self._display_suggestions(current_row)
 
@@ -91,7 +90,7 @@ class AutoPrompt:
 
         self.stdscr.refresh()
 
-    def _complete(self):
+    def _get_suggestions(self):
         if self.console_input:  # cache matches (entries that start with entered text)
             self.suggestions = [s for s in self.corpus 
                                 if s and s.lower().startswith(self.console_input.lower())]
@@ -104,6 +103,8 @@ class AutoPrompt:
             return None
 
 def main(stdscr):
+    global final_prompt
+
     # Initialize UI
     curses.curs_set(0)  # Hide the cursor
     curses.start_color()
@@ -116,11 +117,15 @@ def main(stdscr):
         for line in training_file:
             bisect.insort(auto_prompt.corpus, line.rstrip())
     
-    auto_prompt.get_suggestions(current_row=0)
+    auto_prompt.build_prompt(current_row=0)
+    final_prompt = auto_prompt.final_prompt
 
-# Parse command line arguments
-parser = argparse.ArgumentParser(description="auto_prompt.py command line arguments")
-parser.add_argument('-t', '--training-file', type=str, required=True, help='path/to/training.txt file')
-args = parser.parse_args()
+if __name__ == "__main__":
+    # Parse command line arguments
+    parser = argparse.ArgumentParser(description="auto_prompt.py command line arguments")
+    parser.add_argument('-t', '--training-file', type=str, required=True, help='path/to/training.txt file')
+    args = parser.parse_args()
 
-curses.wrapper(main)
+    curses.wrapper(main)
+
+    print(f'\n{final_prompt}')
