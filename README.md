@@ -2,7 +2,7 @@
 
 This Python script builds prompts for generative AI applications. The goal is to make
 prompt engineering easier, by using autocomplete when typing prompts. The autocomplete
-training text can be defined by the user.
+corpus can be defined by the user.
 
 **Contents**
 1. [Prompt Structure](#1-prompt-structure)
@@ -36,16 +36,8 @@ section.
 
 ## 4. Design Notes / Suggested Improvements
 * Most of the time was spent on preparing the training data
-* The biggest improvement would be to include a data preparation step, so that training data could be submitted into `models.train_models()`
-  with less manual effort:
-  ```
-  from autocomplete import models
-
-  models.train_models('some giant string of text')
-  ```
 
 ## 5. References
-* https://pypi.org/project/autocomplete/
 * https://docs.python.org/3/howto/curses.html
 * [Prompt Structure in Conversations with Generative AI](https://www.nngroup.com/articles/ai-prompt-structure/)
 * [ClinCalc.com](https://clincalc.com)'s [Top 250 Pharmaceutical Drugs](https://clincalc.com/Downloads/Top250Drugs-DrugList.pdf)

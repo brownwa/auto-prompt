@@ -14,45 +14,39 @@
 # https://docs.python.org/3/howto/curses.html
 
 import argparse
-import autocomplete
+import bisect
 import curses
-import os
-import sys
 
 class AutoPrompt:
-    console_input = 'What' # TODO: Initialize to null
+    console_input = ''
     stdscr = 0
-    predictions = {}
+    corpus = []
+    suggestions = []
 
     def __init__(self, stdscr):
         self.stdscr = stdscr
 
-    def get_predictions(self, current_row):
-        # TODO: Start prediction with one of the five prompt components
-        self.predictions = autocomplete.predict('Request', self.console_input)
-
+    def get_suggestions(self, current_row):
         while True:
-            self._display_predictions(current_row)
+            self._display_suggestions(current_row)
             key = self.stdscr.getch()
 
             if key == curses.KEY_UP and current_row > 0:
                 current_row -= 1
-            elif key == curses.KEY_DOWN and current_row < len(self.predictions) - 1:
+            elif key == curses.KEY_DOWN and current_row < len(self.suggestions) - 1:
                 current_row += 1
-            elif key == curses.KEY_UP or key == curses.KEY_DOWN or key == curses.KEY_LEFT or key == curses.KEY_RIGHT:
-                pass
             elif key == curses.KEY_DC or key == 8 or key == 127:
                 self.console_input = self.console_input[:-1]
             elif key == 10:  # Enter key pressed
                 break  # Exit the loop
-            else:
+            # TODO: Add support for all ASCII characters that a user could type in a gen AI prompt
+            elif (key >= 65 and key <= 122) or (key >= 48 and key <= 57): # [a-z][A-Z][0-9]
                 self.console_input += chr(key)
-                # TODO: Start prediction with one of the five prompt components
-                self.predictions = autocomplete.predict('Request', self.console_input)
+                self._complete()
 
-    def _display_predictions(self, current_row):
+    def _display_suggestions(self, current_row):
         h, w = self.stdscr.getmaxyx()
-        menu_items = self.predictions
+        menu_items = self.suggestions
         curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
         selected_text = curses.color_pair(1)
@@ -65,45 +59,40 @@ class AutoPrompt:
             y = h//2 - len(menu_items)//2 + i
             if i == current_row:
                 self.stdscr.attron(selected_text)
-                self.stdscr.addstr(y, x, item[0])
+                self.stdscr.addstr(y, x, item)
                 self.stdscr.attroff(selected_text)
             else:
-                self.stdscr.addstr(y, x, item[0])
+                self.stdscr.addstr(y, x, item)
 
         self.stdscr.refresh()
 
-def find_file(start_path, target_filename):
-    for root, dirs, files in os.walk(start_path):
-        for filename in files:
-            if filename == target_filename:
-                return os.path.join(root, filename)
+    def _complete(self):
+        if self.console_input.lower():  # cache matches (entries that start with entered text)
+            self.suggestions = [s for s in self.corpus 
+                                if s and s.lower().startswith(self.console_input)]
+        else:  # no text entered, all matches possible
+            self.suggestions = self.corpus[:]
 
-    # If the file is not found
-    return None
+        # return match indexed by state
+        try: 
+            return self.suggestions
+        except IndexError:
+            return None
 
 def main(stdscr):
-    # Train the model
-    with open(args.training_file, 'rb') as training_file:
-        training_text = str(training_file.read())
-    model = 'auto_prompt.pkl'
-    autocomplete.models.train_models(training_text, model)
-
-    # Load the model
-    python_executable = sys.executable
-    start_path = os.path.dirname(os.path.dirname(python_executable))
-    model_path = find_file(start_path, model)
-    autocomplete.models.load_models(model_path)
-
     # Initialize UI
     curses.curs_set(0)  # Hide the cursor
     curses.start_color()
     curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
     stdscr.keypad(1)  # Enable special keys (e.g., arrows)
 
-    # Start auto prompt
     auto_prompt = AutoPrompt(stdscr)
-    current_row = 0
-    auto_prompt.get_predictions(current_row)
+
+    with open(args.training_file, 'r') as training_file:
+        for line in training_file:
+            bisect.insort(auto_prompt.corpus, line.rstrip())
+    
+    auto_prompt.get_suggestions(current_row=0)
 
 # Parse command line arguments
 parser = argparse.ArgumentParser(description="auto_prompt.py command line arguments")
