@@ -4,6 +4,8 @@ This Python script builds prompts for generative AI applications. The goal is to
 prompt engineering easier, by using autocomplete when typing prompts. The autocomplete
 corpus can be defined by the user.
 
+**NOTE:** Currently only US English keyboard inputs are supported
+
 **Contents**
 1. [Prompt Structure](#1-prompt-structure)
 2. [Pharmaceutical Prompts Example](#2-pharmaceutical-prompts-example)
@@ -18,7 +20,7 @@ Please see the below table for the prompt structure used with the Auto Prompt to
   **NOTE:** In most generative AI prompts, these components are commonly written in separate lines, for human readability
 
 * The second row describes the purpose of each prompt component
-* The last row gives an example of each prompt component, taken from the included prompt training data, [pharmaceutical_prompts.csv](./pharmaceutical_prompts.csv)
+* The last row gives an example of each prompt component, taken from the included example prompts in [pharmaceutical_prompts.csv](./pharmaceutical_prompts.csv)
 
 
 |Request|Key|Formats|Framing|Shots|
@@ -27,15 +29,15 @@ Please see the below table for the prompt structure used with the Auto Prompt to
 |What should a patient know about this drug|Omeprazole (Prilosec)|college level English|I am a pharmacist doing patient consults|Omeprazole is used to treat excess stomach acid in conditions such as non cancerous stomach ulcers, gastroesophageal reflux disease (GERD), active duodenal ulcer, Zollinger-Ellison syndrome and erosive esophagitis. Omeprazole works by blocking gastric acid production and is from the group of medicines called proton pump inhibitors.|
 
 ## 2. Pharmaceutical Prompts Example
-Included in this repo is training data for building generative AI prompts related to the pharmaceutical industry:
+Included in this repo is a corpus of example prompts, specific to the pharmaceutical industry:
 [pharmaceutical_prompts.csv](./pharmaceutical_prompts.csv).
 
 ## 3. Responsible Use of Data
-The key component of the Auto Prompt tool is actually the training data. Every effort should be made to acquire accurate data from an accountable source. Even more importantly, credit should be given to the providers of the data. The example training data included in [pharmaceutical_prompts.csv](./pharmaceutical_prompts.csv) was sourced from the entities listed in the below [References](#5-references)
+The key component of the Auto Prompt tool is actually the corpus of example prompts. Every effort should be made to acquire accurate data from an accountable source. Even more importantly, credit should be given to the providers of the data. The example prompts included in [pharmaceutical_prompts.csv](./pharmaceutical_prompts.csv) were sourced from the entities listed in the below [References](#5-references)
 section.
 
 ## 4. Design Notes / Suggested Improvements
-* Most of the time was spent on preparing the training data
+* Most of the time was spent on preparing the industry-specific corpus of example prompts
 
 ## 5. References
 * https://docs.python.org/3/howto/curses.html

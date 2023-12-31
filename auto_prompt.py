@@ -16,6 +16,10 @@
 import argparse
 import bisect
 import curses
+try:
+    import gnureadline as readline
+except ImportError:
+    import readline
 
 class AutoPrompt:
     console_input = ''
@@ -27,8 +31,9 @@ class AutoPrompt:
         self.stdscr = stdscr
 
     def get_suggestions(self, current_row):
+        self.stdscr.addstr(0, 0, '[Start typing a generative AI prompt]')
+
         while True:
-            self._display_suggestions(current_row)
             key = self.stdscr.getch()
 
             if key == curses.KEY_UP and current_row > 0:
@@ -39,10 +44,19 @@ class AutoPrompt:
                 self.console_input = self.console_input[:-1]
             elif key == 10:  # Enter key pressed
                 break  # Exit the loop
-            # TODO: Add support for all ASCII characters that a user could type in a gen AI prompt
-            elif (key >= 65 and key <= 122) or (key >= 48 and key <= 57): # [a-z][A-Z][0-9]
+            elif (
+                    # ASCII codes for US English keyboard inputs
+                    (key >= 65 and key <= 122) or   # a-zA-Z
+                    (key >= 48 and key <= 57) or    # 0-9
+                    (key >= 32 and key <= 47) or    # spacebar!"#$%&'()*+,-./
+                    (key >= 58 and key <= 64) or    # :;<=>?@
+                    (key >= 91 and key <= 96) or    # [\]^_`
+                    (key >= 123 and key <= 126)     # {|}~
+                ):
                 self.console_input += chr(key)
                 self._complete()
+
+            self._display_suggestions(current_row)
 
     def _display_suggestions(self, current_row):
         h, w = self.stdscr.getmaxyx()
@@ -67,13 +81,12 @@ class AutoPrompt:
         self.stdscr.refresh()
 
     def _complete(self):
-        if self.console_input.lower():  # cache matches (entries that start with entered text)
+        if self.console_input:  # cache matches (entries that start with entered text)
             self.suggestions = [s for s in self.corpus 
-                                if s and s.lower().startswith(self.console_input)]
+                                if s and s.lower().startswith(self.console_input.lower())]
         else:  # no text entered, all matches possible
             self.suggestions = self.corpus[:]
 
-        # return match indexed by state
         try: 
             return self.suggestions
         except IndexError:
