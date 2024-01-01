@@ -45,7 +45,7 @@ class AutoPrompt:
             elif key == 9: # Tab key pressed
                 self.console_input = self.suggestions[current_row]
             elif key == 27: # ESC key pressed
-                self.final_prompt += f'{self.console_input}\n'
+                self.final_prompt += f'{self.console_input}'
                 break
             elif key == 10 or key == 13: # Enter key pressed
                 if len(self.console_input) == 0:
@@ -65,7 +65,6 @@ class AutoPrompt:
             self._display_suggestions(current_row)
 
     def _display_suggestions(self, current_row):
-        h, w = self.stdscr.getmaxyx()
         menu_items = self.suggestions
         curses.init_pair(1, curses.COLOR_BLACK, curses.COLOR_WHITE)
 
