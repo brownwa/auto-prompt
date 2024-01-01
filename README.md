@@ -6,6 +6,8 @@ corpus can be defined by the user.
 
 **NOTE:** Currently only US English keyboard inputs are supported
 
+![auto-prompt screenshot](./screenshot.png)
+
 **Contents**
 1. [Installation](#1-installation)
 2. [Usage](#2-usage)
