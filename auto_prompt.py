@@ -50,7 +50,10 @@ class AutoPrompt:
             elif key == 10 or key == 13: # Enter key pressed
                 if len(self.console_input) == 0:
                     continue
-                self.final_prompt += f'{self.console_input}\n'
+                elif len(self.suggestions) == 0:
+                    self.final_prompt += f'{self.console_input}\n'
+                else:
+                    self.final_prompt += f'{self.suggestions[current_row]}\n'
                 self.console_input = ''
                 self.suggestions.clear()
                 self.prompt_y += 1
